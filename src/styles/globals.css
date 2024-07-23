@@ -31,3 +31,11 @@ body {
     text-wrap: balance;
   }
 }
+.interest-bar {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.interest-bar::-webkit-scrollbar {
+  display: none;
+}

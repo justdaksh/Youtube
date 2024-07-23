@@ -3,9 +3,9 @@ const INTERESTS: string[]= ["All", "Sports", "Entertainment", "Music", "News", "
 export const InterestBar: React.FC = () => {
   return (
     <>
-      <div className="hidden sm:flex overflow-x-scroll overscroll-contain m-2">
+      <div className="interest-bar hidden sm:flex overflow-x-scroll overscroll-contain m-2">
         {INTERESTS.map((item, index) => (
-          <InterestComponent key={index} item={item} />
+          <InterestComponent key={index} item={item} index={index} />
         ))}
       </div>
     </>
@@ -13,12 +13,15 @@ export const InterestBar: React.FC = () => {
 };
 
 function InterestComponent(props: any) {
-  const className = props.key === 0 ? "bg-white text-black" : "";
+  const baseClass = "px-2 py-1 mx-1 items-center cursor-pointer rounded-lg text-xs transition duration-300";
+  const firstItemClass = "bg-white text-black";
+  const otherItemsClass = "bg-gray-100 bg-opacity-20 hover:bg-gray-100 hover:bg-opacity-35";
+
+  const className = `${baseClass} ${props.index === 0 ? firstItemClass : otherItemsClass}`;
+
   return (
-    <>
-      <div className="px-2 py-1 mx-1 items-center cursor-pointer bg-gray-100 bg-opacity-20 rounded-lg hover:bg-gray-100 hover:bg-opacity-35 transition duration-300 text-xs">
-        {props.item}
-      </div>
-    </>
+    <div className={className}>
+      {props.item}
+    </div>
   );
 }
